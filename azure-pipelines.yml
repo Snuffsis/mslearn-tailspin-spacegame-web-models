@@ -4,7 +4,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dotnetSdkVersion: '6.x'
-  tagVersion: '$(MAJOR).$(MINOR).$(PATCH)-preview'
+  tagVersion: '$(MAJOR).$(MINOR).$(PATCH)-$(PRE_RELEASE)'
 
 steps:
 - task: ExtractVersionFromTag@1
