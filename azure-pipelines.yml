@@ -4,13 +4,9 @@ pool:
 variables:
   buildConfiguration: 'Release'
   dotnetSdkVersion: '6.x'
-  GitVersion.SemVer: ''
 
 steps:
-- task: gitversion/setup@0
-  inputs:
-    versionSpec: '5.x'
-    includePrerelease: true
+- task: ExtractVersionFromTag@1
 
 - task: gitversion/execute@0
   inputs:
@@ -40,8 +36,10 @@ steps:
     command: 'pack'
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
-    versioningScheme: byEnvVar
-    versionEnvVar: 'GitVersion.SemVer'
+    versioningScheme: byPrereleaseNumber
+    majorVersion: '$(MAJOR)'
+    minorVersion: '$(MINOR)'
+    patchVersion: '$(PATCH)'
  
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
