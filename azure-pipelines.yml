@@ -32,7 +32,7 @@ steps:
     command: 'pack'
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
-    versioningScheme: byPrereleaseNumber
+    versioningScheme: 'off'
     majorVersion: '$(MAJOR)'
     minorVersion: '$(MINOR)'
     patchVersion: '$(PATCH)'
