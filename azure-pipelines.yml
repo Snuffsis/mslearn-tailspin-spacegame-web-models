@@ -41,7 +41,7 @@ steps:
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
     versioningScheme: byEnvVar
-  versionEnvVar: 'GitVersion.SemVer'
+    versionEnvVar: 'GitVersion.SemVer'
  
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
