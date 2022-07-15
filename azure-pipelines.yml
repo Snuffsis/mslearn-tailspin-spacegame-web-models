@@ -7,10 +7,13 @@ variables:
   GitVersion.SemVer: ''
 
 steps:
-- task: UseGitVersion@5
-  displayName: gitversion
+- task: gitversion/setup@0
   inputs:
     versionSpec: '5.x'
+    includePrerelease: true
+
+- task: gitversion/execute@0
+  inputs:
     updateAssemblyInfo: true
 
 - task: UseDotNet@2
@@ -38,7 +41,7 @@ steps:
     projects: '**/*.csproj'
     arguments: '--no-build --configuration $(buildConfiguration)'
     versioningScheme: byEnvVar
-    versionEnvVar: 'GitVersion.SemVer'
+  versionEnvVar: 'GitVersion.SemVer'
  
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
