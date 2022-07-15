@@ -48,6 +48,6 @@ steps:
   displayName: 'Publish NuGet package to organization feed'
   inputs:
     command: push
-    feedPublish: '/Tailspin.SpaceGame.Web.Models'
+    feedPublish: '322jiso'
     allowPackageConflicts: true
   condition: succeeded()
