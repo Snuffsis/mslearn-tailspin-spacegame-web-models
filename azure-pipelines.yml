@@ -37,9 +37,17 @@ steps:
     versionEnvVar: 'tagVersion'
  
 - task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
+  displayName: 'Publish NuGet package to project feed'
   inputs:
     command: push
     feedPublish: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
+    allowPackageConflicts: true
+  condition: succeeded()
+
+- task: NuGetCommand@2
+  displayName: 'Publish NuGet package to organization feed'
+  inputs:
+    command: push
+    feedPublish: '$(System.Organization)/Tailspin.SpaceGame.Web.Models'
     allowPackageConflicts: true
   condition: succeeded()
